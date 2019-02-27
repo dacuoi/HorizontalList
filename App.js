@@ -9,6 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import HorizontalEmojiTab from "./src/components/HorizontalEmojiTab";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,11 +21,28 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+    const arrayData2 = ["ic_chatting_keyboard",
+    "ic_chatting_emoji",
+    "ic_chatting_art",
+      "ic_chatting_square",
+      "ic_chatting_number",
+      "ic_chatting_text",
+      "ic_chatting_shape",
+      "ic_chatting_robot"];
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
+        <HorizontalEmojiTab
+              arrayData = {arrayData2}
+              isBorder={true}
+              isIcon={false}
+              onMenuClick={index => {
+                Keyboard.dismiss();
+              }}
+            />
       </View>
     );
   }
