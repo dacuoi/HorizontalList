@@ -11,24 +11,30 @@ import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
-  View,
   Image,
+  TouchableOpacity
 } from "react-native";
+const MENU_HEIGHT = 44;
 
-
-import icMenu1 from "../../res/ic_chatting_robot.png";
-// type Props = {[left,right,indexItem,title,isBorder,isIcon,isActive]};
 type Props = {};
 export default class HorizontalEmojiCell extends Component<Props> {
   constructor(props) {
     super(props);
-  
+    console.log(this.props.title);
+  }
+
+  onPressItem = () => {
+    return this.props.actionOnRow(this.props.index)
   }
 
   render() {
+    var a = "ic_chatting_robot.png";
     return (
-      <View style={[styles.container,{
-        
+      <TouchableOpacity 
+      underlayColor="rgba(0,0,0,0.2)"
+      activeOpacity={0.2}
+      onPress={this.onPressItem}
+      style={[styles.container,{
         borderBottomLeftRadius:this.props.left == true && this.props.isBorder == true ? 14:0,
         borderTopLeftRadius:this.props.left == true && this.props.isBorder == true ? 14:0,
         borderBottomRightRadius:this.props.right == true && this.props.isBorder == true ? 14:0,
@@ -36,19 +42,21 @@ export default class HorizontalEmojiCell extends Component<Props> {
         borderWidth:this.props.isBorder == true ? 0.5:0,
         borderRightWidth:this.props.right == true && this.props.isBorder == true ? 0.5:0,
         borderColor: '#000000',
-        backgroundColor:this.props.isActive == true ? "rgba(0,0,0,0.2)":"white"
-                
+        backgroundColor:this.props.isActive === true ? "rgba(0,0,0,0.2)":"white"       
         }]}>
             {this.props.isIcon == false ?
             <Text style={[styles.text,{
-                color:this.props.isActive == true ? "white":"black",
-                fontWeight:this.props.isActive == true ? "bold":"normal",}]}>
+                color: this.props.isActive === true ? "white" : "black",
+                fontWeight: this.props.isActive === true ? "bold" : "normal",
+                }]
+                } >
                 {this.props.title}
             </Text>
-            : <Image style={[styles.image,{width:40,height:40}]} source={this.props.title} />}
+            
+            : <Image style={[styles.image,{width:40,height:40}]} source={this.props.icon} />}
                 
         
-      </View>
+      </TouchableOpacity>
     );
   }
 }

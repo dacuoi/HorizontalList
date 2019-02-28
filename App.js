@@ -11,36 +11,79 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import HorizontalEmojiTab from "./src/components/HorizontalEmojiTab";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import icImage1 from "./res/ic_number_0.png";
+import icImage2 from "./res/ic_number_1.png";
+import icImage3 from "./res/ic_number_2.png";
+import icImage4 from "./res/ic_number_3.png";
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    const arrayData2 = ["ic_chatting_keyboard",
-    "ic_chatting_emoji",
-    "ic_chatting_art",
-      "ic_chatting_square",
-      "ic_chatting_number",
-      "ic_chatting_text",
-      "ic_chatting_shape",
-      "ic_chatting_robot"];
+    var arrayData1 = [{
+      "id": "1",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage1,
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage2,
+      "status": false
+    },
+    {
+      "id": "3",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage3,
+      "status": false
+    },
+    {
+      "id": "4",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage4,
+      "status": false
+    }];
+    var arrayData2 = [{
+      "id": "1",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage1,
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage2,
+      "status": false
+    },
+    {
+      "id": "3",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage3,
+      "status": false
+    },
+    {
+      "id": "4",
+      "name": "ic_chatting_robot.png",
+      "icon":icImage4,
+      "status": false
+    }];
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
         <HorizontalEmojiTab
+              arrayData = {arrayData1}
+              isBorder={true}
+              isIcon={true}
+              onMenuClick={index => {
+                
+              }}
+            />
+            <HorizontalEmojiTab
               arrayData = {arrayData2}
               isBorder={true}
               isIcon={false}
               onMenuClick={index => {
-                Keyboard.dismiss();
+                
               }}
             />
       </View>
@@ -54,15 +97,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
